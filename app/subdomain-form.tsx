@@ -1,27 +1,12 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import { useState } from 'react';
-import { useActionState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
-import { Smile } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import {
-  EmojiPicker,
-  EmojiPickerContent,
-  EmojiPickerSearch,
-  EmojiPickerFooter
-} from '@/components/ui/emoji-picker';
-import { createSubdomainAction } from '@/app/actions';
-import { rootDomain } from '@/lib/utils';
+import { useState } from "react";
+import { useActionState } from "react";
+import { Smile } from "lucide-react";
+import { createSubdomainAction } from "@/app/actions";
+import { rootDomain } from "@/lib/utils";
 
 type CreateState = {
   error?: string;
@@ -33,10 +18,10 @@ type CreateState = {
 function SubdomainInput({ defaultValue }: { defaultValue?: string }) {
   return (
     <div className="space-y-2">
-      <Label htmlFor="subdomain">Subdomain</Label>
+      <label htmlFor="subdomain">Subdomain</label>
       <div className="flex items-center">
         <div className="relative flex-1">
-          <Input
+          <input
             id="subdomain"
             name="subdomain"
             placeholder="your-subdomain"
@@ -56,7 +41,7 @@ function SubdomainInput({ defaultValue }: { defaultValue?: string }) {
 function IconPicker({
   icon,
   setIcon,
-  defaultValue
+  defaultValue,
 }: {
   icon: string;
   setIcon: (icon: string) => void;
@@ -71,11 +56,11 @@ function IconPicker({
 
   return (
     <div className="space-y-2">
-      <Label htmlFor="icon">Icon</Label>
+      <label htmlFor="icon">Icon</label>
       <div className="flex flex-col gap-2">
         <input type="hidden" name="icon" value={icon} required />
         <div className="flex items-center gap-2">
-          <Card className="flex-1 flex flex-row items-center justify-between p-2 border border-input rounded-md">
+          <div className="flex-1 flex flex-row items-center justify-between p-2 border border-input rounded-md">
             <div className="min-w-[40px] min-h-[40px] flex items-center pl-[14px] select-none">
               {icon ? (
                 <span className="text-3xl">{icon}</span>
@@ -85,36 +70,7 @@ function IconPicker({
                 </span>
               )}
             </div>
-            <Popover open={isPickerOpen} onOpenChange={setIsPickerOpen}>
-              <PopoverTrigger asChild>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="ml-auto rounded-sm"
-                  onClick={() => setIsPickerOpen(!isPickerOpen)}
-                >
-                  <Smile className="h-4 w-4 mr-2" />
-                  Select Emoji
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent
-                className="p-0 w-[256px]"
-                align="end"
-                sideOffset={5}
-              >
-                <EmojiPicker
-                  className="h-[300px] w-[256px]"
-                  defaultValue={defaultValue}
-                  onEmojiSelect={handleEmojiSelect}
-                >
-                  <EmojiPickerSearch />
-                  <EmojiPickerContent />
-                  <EmojiPickerFooter />
-                </EmojiPicker>
-              </PopoverContent>
-            </Popover>
-          </Card>
+          </div>
         </div>
         <p className="text-xs text-gray-500">
           Select an emoji to represent your subdomain
@@ -125,7 +81,7 @@ function IconPicker({
 }
 
 export function SubdomainForm() {
-  const [icon, setIcon] = useState('');
+  const [icon, setIcon] = useState("");
 
   const [state, action, isPending] = useActionState<CreateState, FormData>(
     createSubdomainAction,
@@ -142,9 +98,9 @@ export function SubdomainForm() {
         <div className="text-sm text-red-500">{state.error}</div>
       )}
 
-      <Button type="submit" className="w-full" disabled={isPending || !icon}>
-        {isPending ? 'Creating...' : 'Create Subdomain'}
-      </Button>
+      <button type="submit" className="w-full" disabled={isPending || !icon}>
+        {isPending ? "Creating..." : "Create Subdomain"}
+      </button>
     </form>
   );
 }

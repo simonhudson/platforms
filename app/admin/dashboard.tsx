@@ -1,12 +1,10 @@
-'use client';
+"use client";
 
-import { useActionState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trash2, Loader2 } from 'lucide-react';
-import Link from 'next/link';
-import { deleteSubdomainAction } from '@/app/actions';
-import { rootDomain, protocol } from '@/lib/utils';
+import { useActionState } from "react";
+import { Trash2, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { deleteSubdomainAction } from "@/app/actions";
+import { rootDomain, protocol } from "@/lib/utils";
 
 type Tenant = {
   subdomain: string;
@@ -40,7 +38,7 @@ function DashboardHeader() {
 function TenantGrid({
   tenants,
   action,
-  isPending
+  isPending,
 }: {
   tenants: Tenant[];
   action: (formData: FormData) => void;
@@ -48,30 +46,28 @@ function TenantGrid({
 }) {
   if (tenants.length === 0) {
     return (
-      <Card>
-        <CardContent className="py-8 text-center">
+      <div>
+        <div className="py-8 text-center">
           <p className="text-gray-500">No subdomains have been created yet.</p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     );
   }
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {tenants.map((tenant) => (
-        <Card key={tenant.subdomain}>
-          <CardHeader className="pb-2">
+        <div key={tenant.subdomain}>
+          <header className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-xl">{tenant.subdomain}</CardTitle>
+              <h2 className="text-xl">{tenant.subdomain}</h2>
               <form action={action}>
                 <input
                   type="hidden"
                   name="subdomain"
                   value={tenant.subdomain}
                 />
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <button
                   type="submit"
                   disabled={isPending}
                   className="text-gray-500 hover:text-gray-700 hover:bg-gray-50"
@@ -81,11 +77,11 @@ function TenantGrid({
                   ) : (
                     <Trash2 className="h-5 w-5" />
                   )}
-                </Button>
+                </button>
               </form>
             </div>
-          </CardHeader>
-          <CardContent>
+          </header>
+          <div>
             <div className="flex items-center justify-between">
               <div className="text-4xl">{tenant.emoji}</div>
               <div className="text-sm text-gray-500">
@@ -102,8 +98,8 @@ function TenantGrid({
                 Visit subdomain →
               </a>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       ))}
     </div>
   );

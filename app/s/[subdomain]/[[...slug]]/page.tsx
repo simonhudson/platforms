@@ -3,34 +3,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getSubdomainData } from "@/lib/subdomains";
 import { protocol, rootDomain } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverAnchor,
-} from "@/components/ui/popover";
 
 export async function generateMetadata({
   params,
@@ -84,61 +56,20 @@ export default async function Page({
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               {subdomain}
             </h1>
-            <p className="mt-3 text-lg text-gray-600">
-              This is your custom subdomain page
-            </p>
+
             <div className="my-6">
-              <Button className="my-6">This is a button</Button>
-            </div>
-            <div className="my-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>
+              <div>
+                <header>
+                  <h2>
                     Welcome to {subdomain}.{rootDomain}
-                  </CardTitle>
-                </CardHeader>
-                <CardDescription>
-                  Your personalized subdomain page
-                </CardDescription>
-                <CardContent>
-                  Explore the features and customize your experience.
-                </CardContent>
-                <CardFooter>
-                  <CardAction>
-                    <Button variant="secondary">Get Started</Button>
-                  </CardAction>
-                </CardFooter>
-              </Card>
-            </div>
-            <div className="my-6">
-              <Dialog>
-                <DialogOverlay />
-                <DialogPortal>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Dialog Title</DialogTitle>
-                      <DialogDescription>
-                        This is a description for the dialog.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter></DialogFooter>
-                  </DialogContent>
-                </DialogPortal>
-                <DialogTrigger>Open dialog</DialogTrigger>
-              </Dialog>
-            </div>
-            <div className="my-6">
-              <Popover>
-                <PopoverTrigger>
-                  <Button variant="outline" className="mt-4">
-                    {" "}
-                    Open Popover
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <div className="text-sm">This is the popover content.</div>
-                </PopoverContent>
-              </Popover>
+                  </h2>
+                </header>
+                <p>Your personalized subdomain page</p>
+                <div>Explore the features and customize your experience.</div>
+                <div>
+                  <button>Get Started</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
