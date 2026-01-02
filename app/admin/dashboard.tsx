@@ -8,7 +8,6 @@ import { rootDomain, protocol } from "@/lib/utils";
 
 type Tenant = {
   subdomain: string;
-  emoji: string;
   createdAt: number;
 };
 
@@ -83,7 +82,6 @@ function TenantGrid({
           </header>
           <div>
             <div className="flex items-center justify-between">
-              <div className="text-4xl">{tenant.emoji}</div>
               <div className="text-sm text-gray-500">
                 Created: {new Date(tenant.createdAt).toLocaleDateString()}
               </div>

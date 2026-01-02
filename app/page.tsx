@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { SubdomainForm } from './subdomain-form';
-import { rootDomain } from '@/lib/utils';
+import Link from "next/link";
+import { SubdomainForm } from "./subdomain-form";
+import { rootDomain } from "@/lib/utils";
 
 export default async function HomePage() {
   return (
@@ -20,7 +20,7 @@ export default async function HomePage() {
             {rootDomain}
           </h1>
           <p className="mt-3 text-lg text-gray-600">
-            Create your own subdomain with a custom emoji
+            Create your own subdomain
           </p>
         </div>
 
