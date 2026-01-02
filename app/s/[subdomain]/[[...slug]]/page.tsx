@@ -52,7 +52,6 @@ export default async function Page({
 
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <div className="text-9xl mb-6">{subdomainData.emoji}</div>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               {subdomain}
             </h1>
